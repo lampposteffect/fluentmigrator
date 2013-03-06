@@ -49,6 +49,26 @@ namespace FluentMigrator.Runner
             dataExpression.ExecuteWith(Processor);
         }
 
+        //Custom IWT info update
+        public void UpdateVersionInfo(long version, int majorVersion, int minorVersion, int branchNumber, int commitNumber)
+        {
+            var versionInsert = new InsertionDataDefinition
+            {
+                new KeyValuePair<string, object>(VersionTableMetaData.VersionColumnName, version),
+                new KeyValuePair<string, object>(VersionTableMetaData.MajorVersionColumnName, majorVersion),
+                new KeyValuePair<string, object>(VersionTableMetaData.MinorVersionColumnName, minorVersion),
+                new KeyValuePair<string, object>(VersionTableMetaData.BranchNumberColumnName, branchNumber),
+                new KeyValuePair<string, object>(VersionTableMetaData.CommitNumberColumnName, commitNumber),
+                new KeyValuePair<string, object>("AppliedOn", DateTime.UtcNow)
+            };
+
+            var dataExpression = new InsertDataExpression();
+            dataExpression.Rows.Add(versionInsert);
+            dataExpression.TableName = VersionTableMetaData.TableName;
+            dataExpression.SchemaName = VersionTableMetaData.SchemaName;
+            dataExpression.ExecuteWith(Processor);
+        }
+
         public IVersionTableMetaData GetVersionTableMetaData()
         {
             Type matchedType = Assembly.GetExportedTypes().FirstOrDefault(t => Conventions.TypeIsVersionTableMetaData(t));
@@ -65,7 +85,7 @@ namespace FluentMigrator.Runner
         {
             return new InsertionDataDefinition
                        {
-                           new KeyValuePair<string, object>(VersionTableMetaData.ColumnName, version),
+                           new KeyValuePair<string, object>(VersionTableMetaData.VersionColumnName, version),
                            new KeyValuePair<string, object>("AppliedOn", DateTime.UtcNow)
                        };
         }
@@ -158,7 +178,7 @@ namespace FluentMigrator.Runner
             var expression = new DeleteDataExpression { TableName = VersionTableMetaData.TableName, SchemaName = VersionTableMetaData.SchemaName };
             expression.Rows.Add(new DeletionDataDefinition
                                     {
-                                        new KeyValuePair<string, object>(VersionTableMetaData.ColumnName, version)
+                                        new KeyValuePair<string, object>(VersionTableMetaData.VersionColumnName, version)
                                     });
             expression.ExecuteWith(Processor);
         }

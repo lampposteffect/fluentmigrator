@@ -216,7 +216,7 @@ namespace FluentMigrator.Tests.Unit
 
     namespace DoesHandleTransactionLessMigrations
     {
-        [Migration(1, TransactionBehavior.None)]
+        [Migration(1, 1, 1, 1, 1, TransactionBehavior.None)]
         public class MigrationThatIsTransactionLess : Migration
         {
             public override void Up()
@@ -230,7 +230,7 @@ namespace FluentMigrator.Tests.Unit
             }
         }
 
-        [Migration(2)]
+        [Migration(2, 1, 1, 1, 2)]
         public class MigrationThatIsNotTransactionLess : Migration
         {
             public override void Up()
@@ -247,7 +247,7 @@ namespace FluentMigrator.Tests.Unit
 
     namespace DoesNotInheritFromBaseClass
     {
-        [Migration(1)]
+        [Migration(1, 1, 1, 1, 2)]
         public class MigrationThatDoesNotInheritFromMigrationBaseClass : IMigration
         {
             /// <summary>The arbitrary application context passed to the task runner.</summary>
@@ -270,7 +270,7 @@ namespace FluentMigrator.Tests.Unit
 
     namespace DuplicateVersionNumbers
     {
-        [Migration(1)]
+        [Migration(1, 1, 1, 1, 1)]
         public class Duplicate1 : Migration
         {
             public override void Up() { }
@@ -278,7 +278,7 @@ namespace FluentMigrator.Tests.Unit
             public override void Down() { }
         }
 
-        [Migration(1)]
+        [Migration(1, 1, 1, 1, 1)]
         public class Duplicate2 : Migration
         {
             public override void Up() { }
@@ -290,7 +290,7 @@ namespace FluentMigrator.Tests.Unit
     namespace TaggingTestFakes
     {
         [Tags("UK", "IE", "QA", "Production")]
-        [Migration(123)]
+        [Migration(1231, 1, 1, 1, 1)]
         public class TaggedMigraion : Migration
         {
             public override void Up() { }
@@ -298,7 +298,7 @@ namespace FluentMigrator.Tests.Unit
             public override void Down() { }
         }
 
-        [Migration(567)]
+        [Migration(5671, 1, 1, 1, 1)]
         public class UntaggedMigration : Migration
         {
             public override void Up() { }

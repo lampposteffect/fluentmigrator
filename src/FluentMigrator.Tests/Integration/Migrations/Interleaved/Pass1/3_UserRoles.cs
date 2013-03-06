@@ -18,7 +18,7 @@
 
 namespace FluentMigrator.Tests.Integration.Migrations.Interleaved.Pass1
 {
-    [Migration(200909060953)]
+    [Migration(200909060953, 1, 1, 1, 1)]
     public class UserToRole : Migration
     {
         public override void Up()

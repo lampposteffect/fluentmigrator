@@ -92,7 +92,7 @@ namespace FluentMigrator.Infrastructure
         public static IMigrationInfo GetMigrationInfoFor(IMigration migration)
         {
             var migrationAttribute = migration.GetType().GetOneAttribute<MigrationAttribute>();
-            var migrationInfo = new MigrationInfo(migrationAttribute.Version, migrationAttribute.TransactionBehavior, migration);
+            var migrationInfo = new MigrationInfo(migrationAttribute.Version, migrationAttribute.MajorVersion, migrationAttribute.MinorVersion, migrationAttribute.BranchNumber, migrationAttribute.CommitNumber, migrationAttribute.TransactionBehavior, migration);
 
             foreach (MigrationTraitAttribute traitAttribute in migration.GetType().GetAllAttributes<MigrationTraitAttribute>())
                 migrationInfo.AddTrait(traitAttribute.Name, traitAttribute.Value);

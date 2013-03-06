@@ -18,7 +18,7 @@
 
 namespace FluentMigrator.Tests.Integration.Migrations.Invalid
 {
-    [Migration(1)]
+    [Migration(1, 1, 1, 1, 1)]
     public class InvalidMigration : Migration
     {
         public override void Up()

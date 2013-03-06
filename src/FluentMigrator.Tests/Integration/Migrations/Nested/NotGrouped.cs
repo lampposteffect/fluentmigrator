@@ -1,6 +1,6 @@
 ﻿namespace FluentMigrator.Tests.Integration.Migrations.Nested
 {
-    [Migration(301)]
+    [Migration(301, 1, 1, 1, 1)]
     public class NotGrouped
         : Migration
     {

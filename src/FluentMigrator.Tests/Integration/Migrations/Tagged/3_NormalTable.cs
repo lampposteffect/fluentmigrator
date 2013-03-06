@@ -1,6 +1,6 @@
 namespace FluentMigrator.Tests.Integration.Migrations.Tagged
 {
-    [Migration(3)]
+    [Migration(3, 1, 1, 1, 1)]
     public class NormalTable : Migration
     {
         private const string TableName = "NormalTable";

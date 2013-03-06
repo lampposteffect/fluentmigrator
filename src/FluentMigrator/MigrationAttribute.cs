@@ -25,18 +25,25 @@ namespace FluentMigrator
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
     public class MigrationAttribute : Attribute
     {
-        public MigrationAttribute(long version)
-            : this(version, TransactionBehavior.Default)
+        public MigrationAttribute(long version, int majorVersion, int minorVersion, int branchNumber, int commitNumber): this(version, majorVersion, minorVersion, branchNumber, commitNumber, TransactionBehavior.Default)
         {
         }
 
-        public MigrationAttribute(long version, TransactionBehavior transactionBehavior)
+        public MigrationAttribute(long version, int majorVersion, int minorVersion, int branchNumber, int commitNumber, TransactionBehavior transactionBehavior)
         {
             Version = version;
+            MajorVersion = majorVersion;
+            MinorVersion = minorVersion;
+            BranchNumber = branchNumber;
+            CommitNumber = commitNumber;
             TransactionBehavior = transactionBehavior;
         }
 
         public long Version { get; private set; }
+        public int MajorVersion { get; private set; }
+        public int MinorVersion { get; private set; }
+        public int BranchNumber { get; private set; }
+        public int CommitNumber { get; private set; }
         public TransactionBehavior TransactionBehavior { get; private set; }
     }
 }

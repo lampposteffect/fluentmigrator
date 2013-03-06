@@ -18,7 +18,7 @@
 
 namespace FluentMigrator.Tests.Integration.Migrations.Interleaved.Pass3
 {
-    [Migration(200909060935)]
+    [Migration(200909060935, 1, 1, 1, 1)]
     public class UserEmail : Migration
     {
         public override void Up()

@@ -30,14 +30,34 @@ namespace FluentMigrator.VersionTableInfo
             get { return "VersionInfo"; }
         }
 
-        public virtual string ColumnName
+        public virtual string UniqueIndexName
+        {
+            get { return "UC_Version"; }
+        }
+
+        public virtual string VersionColumnName
         {
             get { return "Version"; }
         }
 
-        public virtual string UniqueIndexName
+        public virtual string MajorVersionColumnName
         {
-            get { return "UC_Version"; }
+            get { return "Version"; }
+        }
+
+        public virtual string MinorVersionColumnName
+        {
+            get { return "Version"; }
+        }
+
+        public virtual string BranchNumberColumnName
+        {
+            get { return "Version"; }
+        }
+
+        public virtual string CommitNumberColumnName
+        {
+            get { return "Version"; }
         }
     }
 }

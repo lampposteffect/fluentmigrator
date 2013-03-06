@@ -22,7 +22,11 @@ namespace FluentMigrator.VersionTableInfo
     {
         string SchemaName { get; }
         string TableName { get; }
-        string ColumnName { get; }
         string UniqueIndexName { get; }
+        string VersionColumnName { get; }
+        string MajorVersionColumnName { get; }
+        string MinorVersionColumnName { get; }
+        string BranchNumberColumnName { get; }
+        string CommitNumberColumnName { get; }
     }
 }

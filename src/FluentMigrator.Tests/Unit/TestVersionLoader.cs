@@ -7,8 +7,7 @@ using FluentMigrator.Runner.Versioning;
 
 namespace FluentMigrator.Tests.Unit
 {
-    public class TestVersionLoader
-        : IVersionLoader
+    public class TestVersionLoader : IVersionLoader
     {
         private VersionTableInfo.IVersionTableMetaData versionTableMetaData;
 
@@ -58,6 +57,14 @@ namespace FluentMigrator.Tests.Unit
         public IMigrationRunner Runner { get; set; }
 
         public void UpdateVersionInfo(long version)
+        {
+            this.Versions.Add(version);
+
+            this.DidUpdateVersionInfoGetCalled = true;
+        }
+
+        //IWT Specific. I'm pretty sure I'm not doing this correctly as four of the parameters aren't even being used.
+        public void UpdateVersionInfo(long version, int majorVersion, int minorVersion, int branchNumber, int commitNumber)
         {
             this.Versions.Add(version);
 

@@ -18,7 +18,7 @@
 
 namespace FluentMigrator.Tests.Integration.Migrations
 {
-    [Migration(2)]
+    [Migration(2, 1, 1, 1, 1)]
     public class VersionedMigration : Migration
     {
         public override void Up()

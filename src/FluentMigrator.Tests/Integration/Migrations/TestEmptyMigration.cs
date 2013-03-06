@@ -22,7 +22,7 @@ namespace FluentMigrator.Tests.Integration.Migrations
 {
     /// <summary>A migration class that deliberately does nothing.</summary>
     /// <remarks>This is intended for unit testing the migration class itself, rather than the database migration.</remarks>
-    [Migration(3)]
+    [Migration(3, 1, 1, 1, 1)]
     public class TestEmptyMigration : Migration
     {
         public override void Up() { }

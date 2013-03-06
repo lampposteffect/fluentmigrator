@@ -25,8 +25,12 @@ namespace FluentMigrator.Tests.Unit
 	public class TestVersionTableMetaData : IVersionTableMetaData
 	{
 		public const string TABLENAME = "testVersionTableName";
-		public const string COLUMNNAME = "testColumnName";
 		public const string UNIQUEINDEXNAME = "testUniqueIndexName";
+        public const string VERSIONCOLUMNNAME = "testVersion";
+        public const string MAJORVERSIONCOLUMNNAME = "testMajorVersion";
+        public const string MINORVERSIONCOLUMNNAME = "testMinorVersion";
+        public const string BRANCHNUMBERCOLUMNNAME = "testBranchNumber";
+        public const string COMMITNUMBERCOLUMNNAME = "testCommitNumber";
 
 		public TestVersionTableMetaData()
 		{
@@ -40,15 +44,32 @@ namespace FluentMigrator.Tests.Unit
 			get { return TABLENAME; }
 		}
 
-		public string ColumnName
-		{
-			get { return COLUMNNAME; }
-		}
-
 		public string UniqueIndexName
 		{
 			get { return UNIQUEINDEXNAME; }
 		}
+
+        public string VersionColumnName
+        {
+            get { return VERSIONCOLUMNNAME; }
+        }
+
+        public string MajorVersionColumnName
+        {
+            get { return MAJORVERSIONCOLUMNNAME; }
+        }
+        public string MinorVersionColumnName
+        {
+            get { return MINORVERSIONCOLUMNNAME; }
+        }
+        public string BranchNumberColumnName
+        {
+            get { return BRANCHNUMBERCOLUMNNAME; }
+        }
+        public string CommitNumberColumnName
+        {
+            get { return COMMITNUMBERCOLUMNNAME; }
+        }
 	}
 }
 

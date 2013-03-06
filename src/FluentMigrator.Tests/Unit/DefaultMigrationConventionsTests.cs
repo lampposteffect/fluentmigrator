@@ -267,7 +267,7 @@ namespace FluentMigrator.Tests.Unit
     {
     }
 
-    [Migration(123, TransactionBehavior.None)]
+    [Migration(123, 1, 1, 1, 1, TransactionBehavior.None)]
     [MigrationTrait("key", "test")]
     internal class DefaultConventionMigrationFake : Migration
     {

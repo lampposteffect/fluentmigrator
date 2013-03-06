@@ -18,7 +18,7 @@
 
 namespace FluentMigrator.Tests.Unit.Runners.Migrations
 {
-	[Migration(3)]
+    [Migration(3, 1, 1, 1, 1)]
 	public class UserToRole : Migration
 	{
 		public override void Up()

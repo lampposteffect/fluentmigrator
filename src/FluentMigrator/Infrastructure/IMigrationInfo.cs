@@ -28,12 +28,19 @@ namespace FluentMigrator.Infrastructure
         IMigration Migration { get; }
         object Trait(string name);
         bool HasTrait(string name);
+
+        //IWT Specific
+        int MajorVersion { get; }
+        int MinorVersion { get; }
+        int BranchNumber { get; }
+        int CommitNumber { get; }
     }
 
     public class MigrationInfo : IMigrationInfo
     {
         private readonly Dictionary<string, object> _traits = new Dictionary<string, object>();
 
+        //TODO: Add extra info for major, minor, branch, and commit number. Then push to database
         public MigrationInfo(long version, TransactionBehavior transactionBehavior, IMigration migration)
         {
             if (migration == null) throw new ArgumentNullException("migration");
@@ -43,9 +50,29 @@ namespace FluentMigrator.Infrastructure
             Migration = migration;
         }
 
+        public MigrationInfo(long version, int majorVersion, int minorVersion, int branchNumber, int commitNumber, TransactionBehavior transactionBehavior, IMigration migration)
+        {
+            if (migration == null) throw new ArgumentNullException("migration");
+
+            Version = version;
+            MajorVersion = majorVersion;
+            MinorVersion = minorVersion;
+            BranchNumber = branchNumber;
+            CommitNumber = commitNumber;
+            TransactionBehavior = transactionBehavior;
+            Migration = migration;
+        }
+
         public long Version { get; private set; }
         public TransactionBehavior TransactionBehavior { get; private set; }
         public IMigration Migration { get; private set; }
+
+        //IWT specific
+        public int MajorVersion { get; private set; }
+        public int MinorVersion { get; private set; }
+        public int BranchNumber { get; private set; }
+        public int CommitNumber { get; private set; }
+        //IWT Specific
 
         public object Trait(string name)
         {

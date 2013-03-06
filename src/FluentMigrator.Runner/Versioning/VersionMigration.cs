@@ -34,7 +34,11 @@ namespace FluentMigrator.Runner.Versioning
         {
             Create.Table(_versionTableMetaData.TableName)
                 .InSchema(_versionTableMetaData.SchemaName)
-                .WithColumn(_versionTableMetaData.ColumnName).AsInt64().NotNullable();
+                .WithColumn(_versionTableMetaData.VersionColumnName).AsInt64().NotNullable()
+                .WithColumn(_versionTableMetaData.MajorVersionColumnName).AsInt32().NotNullable()
+                .WithColumn(_versionTableMetaData.MinorVersionColumnName).AsInt32().NotNullable()
+                .WithColumn(_versionTableMetaData.BranchNumberColumnName).AsInt32().NotNullable()
+                .WithColumn(_versionTableMetaData.CommitNumberColumnName).AsInt32().NotNullable();
         }
 
         public override void Down()
@@ -81,7 +85,7 @@ namespace FluentMigrator.Runner.Versioning
                 .InSchema(versionTableMeta.SchemaName)
                 .WithOptions().Unique()
                 .WithOptions().Clustered()
-                .OnColumn(versionTableMeta.ColumnName);
+                .OnColumn(versionTableMeta.VersionColumnName);
 
             Alter.Table(versionTableMeta.TableName).InSchema(versionTableMeta.SchemaName).AddColumn("AppliedOn").AsDateTime().Nullable();
         }

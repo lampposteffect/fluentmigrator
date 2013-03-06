@@ -2,7 +2,7 @@
 
 namespace FluentMigrator.Tests.Integration.Migrations
 {
-    [Migration(4)]
+    [Migration(4, 1, 1, 1, 2)]
     public class AddBirthDateToUser : Migration
     {
         public override void Up()

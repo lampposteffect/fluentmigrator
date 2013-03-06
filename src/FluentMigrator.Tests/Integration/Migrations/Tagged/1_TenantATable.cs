@@ -4,7 +4,7 @@ namespace FluentMigrator.Tests.Integration.Migrations.Tagged
 {
 
     [Tags("TenantA")]
-    [Migration(1)]
+    [Migration(1, 1, 1, 1, 1)]
     public class TenantATable : Migration
     {
         private const string TableName = "TenantATable";

@@ -7,7 +7,7 @@ using FluentMigrator;
 
 namespace Migrations
 {
-    [Migration(20130130070824)]
+    [Migration(20130130070824, 1, 1, 1, 1)]
     public class CreateInitialDB : Migration
     {
         public override void Up()
